@@ -31,6 +31,10 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public List<Product> getProductsBySkinType(String skinType) {
+        return productRepository.findBySkinType(skinType);
+    }
+
     public Product updateProduct(Long id, Product newProduct) {
 
         Product product = productRepository.findById(id).orElse(null);
@@ -43,7 +47,10 @@ public class ProductService {
         product.setName(newProduct.getName());
         product.setCategory(newProduct.getCategory());
         product.setPrice(newProduct.getPrice());
+        product.setImage(newProduct.getImage());
+        product.setSkinType(newProduct.getSkinType());
 
         return productRepository.save(product);
+
     }
 }

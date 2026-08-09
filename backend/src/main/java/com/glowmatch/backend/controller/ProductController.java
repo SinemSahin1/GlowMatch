@@ -1,3 +1,4 @@
+
 package com.glowmatch.backend.controller;
 
 import com.glowmatch.backend.model.Product;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     private final ProductService productService;
@@ -45,4 +47,10 @@ public class ProductController {
 
         return productService.updateProduct(id, product);
     }
+
+    @GetMapping("/skin-type/{skinType}")
+    public List<Product> getProductsBySkinType(@PathVariable String skinType) {
+        return productService.getProductsBySkinType(skinType);
+    }
+
 }

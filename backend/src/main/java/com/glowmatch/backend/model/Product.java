@@ -16,6 +16,24 @@ public class Product {
     private String name;
     private String category;
     private Double price;
+    private String image;
+    private String skinType;
+
+    public String getSkinType() {
+        return skinType;
+    }
+
+    public void setSkinType(String skinType) {
+        this.skinType = skinType;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Product() {
     }
