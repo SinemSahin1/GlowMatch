@@ -21,6 +21,79 @@ public class Product {
     private Double price;
     private String image;
     private String skinType;
+    private String ageRange;
+    private String skincareGoal;
+    private String undertone;
+    private String finish;
+
+    private String gender;
+    private String fragranceFamily;
+    private String occasion;
+    private String intensity;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getFragranceFamily() {
+        return fragranceFamily;
+    }
+
+    public void setFragranceFamily(String fragranceFamily) {
+        this.fragranceFamily = fragranceFamily;
+    }
+
+    public String getOccasion() {
+        return occasion;
+    }
+
+    public void setOccasion(String occasion) {
+        this.occasion = occasion;
+    }
+
+    public String getIntensity() {
+        return intensity;
+    }
+
+    public void setIntensity(String intensity) {
+        this.intensity = intensity;
+    }
+
+    public String getUndertone() {
+        return undertone;
+    }
+
+    public void setUndertone(String undertone) {
+        this.undertone = undertone;
+    }
+
+    public String getFinish() {
+        return finish;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    public String getAgeRange() {
+        return ageRange;
+    }
+
+    public void setAgeRange(String ageRange) {
+        this.ageRange = ageRange;
+    }
+
+    public String getSkincareGoal() {
+        return skincareGoal;
+    }
+
+    public void setSkincareGoal(String skincareGoal) {
+        this.skincareGoal = skincareGoal;
+    }
 
     public String getSkinType() {
         return skinType;
@@ -76,4 +149,5 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 }

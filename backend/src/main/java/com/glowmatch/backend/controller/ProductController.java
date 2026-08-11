@@ -53,4 +53,35 @@ public class ProductController {
         return productService.getProductsBySkinType(skinType);
     }
 
+    @GetMapping("/makeup")
+    public List<Product> getMakeupRecommendations(
+            @RequestParam String product,
+            @RequestParam String undertone,
+            @RequestParam String finish,
+            @RequestParam Double budget) {
+
+        return productService.getMakeupRecommendations(
+                product,
+                undertone,
+                finish,
+                budget);
+
+    }
+
+    @GetMapping("/fragrance")
+    public List<Product> handleFragranceRecommendations(
+            @RequestParam String gender,
+            @RequestParam String fragranceFamily,
+            @RequestParam String occasion,
+            @RequestParam String intensity,
+            @RequestParam Double budget) {
+
+        return productService.getFragranceRecommendations(
+                gender,
+                fragranceFamily,
+                occasion,
+                intensity,
+                budget);
+
+    }
 }

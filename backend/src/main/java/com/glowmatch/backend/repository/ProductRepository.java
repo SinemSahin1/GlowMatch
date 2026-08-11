@@ -9,4 +9,20 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findBySkinType(String skinType);
 
+    List<Product> findByCategoryAndUndertoneAndFinishAndPriceLessThanEqual(
+            String category,
+            String undertone,
+            String finish,
+            Double price);
+
+    List<Product> findByCategoryAndGenderAndFragranceFamilyAndPriceLessThanEqual(
+            String category,
+            String gender,
+            String fragranceFamily,
+            Double price);
+
+    List<Product> findByCategoryAndFragranceFamilyAndPriceLessThanEqual(
+            String category,
+            String fragranceFamily,
+            Double price);
 }

@@ -1,12 +1,13 @@
+import { Routes, Route } from 'react-router-dom'
+
 import Navbar from './components/Navbar'
-import Login from './components/Login'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
 import Products from './components/Products'
 import BeautyQuiz from './components/BeautyQuiz'
-import { Routes, Route } from 'react-router-dom'
-import './App.css'
+import Login from './components/Login'
 
+import './App.css'
 
 function Home() {
   return (
@@ -15,26 +16,16 @@ function Home() {
       <Hero />
       <Categories />
       <Products />
-      <BeautyQuiz />
     </>
   )
 }
 
-
 function App() {
   return (
     <Routes>
-
-      <Route
-        path="/"
-        element={<Home />}
-      />
-
-      <Route
-        path="/login"
-        element={<Login />}
-      />
-
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/quiz/:category" element={<BeautyQuiz />} />
     </Routes>
   )
 }

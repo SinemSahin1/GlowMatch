@@ -1,41 +1,50 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
 
+  const navigate = useNavigate()
+
   const handleLogin = async () => {
-
-    const response = await fetch('http://localhost:8080/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
+    try {
+      const response = await fetch('http://localhost:8080/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
       })
-    })
-
-    const result = await response.json()
-
-    if (result === true) {
+  
+      console.log('response:', response)
+  
+      const result = await response.json()
+  
+      console.log('result:', result)
+  
+      if (result === true) {
         setMessage('Login successful!')
-      
+  
         setTimeout(() => {
-          window.location.href = 'http://localhost:5173/'
+          navigate('/')
         }, 1000)
       } else {
         setMessage('Email or password is incorrect.')
       }
   
+    } catch (error) {
+      console.error(error)
+      setMessage('Backend connection error.')
+    }
   }
 
   return (
     <div className="login">
-
       <h2>Login</h2>
 
       <input
@@ -57,7 +66,6 @@ function Login() {
       </button>
 
       <p>{message}</p>
-
     </div>
   )
 }

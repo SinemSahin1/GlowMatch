@@ -1,4 +1,9 @@
+
+import { Link } from 'react-router-dom'
 function Navbar() {
+  <Link to="/login">
+  <button>Login</button>
+</Link>
     return (
       <nav>
         <h1>GlowMatch</h1>

@@ -48,9 +48,56 @@ public class ProductService {
         product.setCategory(newProduct.getCategory());
         product.setPrice(newProduct.getPrice());
         product.setImage(newProduct.getImage());
+
         product.setSkinType(newProduct.getSkinType());
+        product.setUndertone(newProduct.getUndertone());
+        product.setFinish(newProduct.getFinish());
+
+        product.setGender(newProduct.getGender());
+        product.setFragranceFamily(newProduct.getFragranceFamily());
+        product.setOccasion(newProduct.getOccasion());
+        product.setIntensity(newProduct.getIntensity());
 
         return productRepository.save(product);
 
     }
+
+    public List<Product> getMakeupRecommendations(
+            String product,
+            String undertone,
+            String finish,
+            Double budget) {
+
+        return productRepository.findByCategoryAndUndertoneAndFinishAndPriceLessThanEqual(
+                product,
+                undertone,
+                finish,
+                budget
+
+        );
+    }
+
+    public List<Product> getFragranceRecommendations(
+            String gender,
+            String fragranceFamily,
+            String occasion,
+            String intensity,
+            Double budget) {
+
+        if (gender.equals("No Preference")) {
+            return productRepository
+                    .findByCategoryAndFragranceFamilyAndPriceLessThanEqual(
+                            "Fragrance",
+                            fragranceFamily,
+                            budget);
+        }
+
+        return productRepository
+                .findByCategoryAndGenderAndFragranceFamilyAndPriceLessThanEqual(
+                        "Fragrance",
+                        gender,
+                        fragranceFamily,
+                        budget);
+    }
+
 }
