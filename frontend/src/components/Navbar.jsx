@@ -1,28 +1,45 @@
-
 import { Link } from 'react-router-dom'
+
 function Navbar() {
-  <Link to="/login">
-  <button>Login</button>
-</Link>
-    return (
-      <nav>
-        <h1>GlowMatch</h1>
-  
-        <ul>
+  return (
+    <nav className="navbar">
+
+      <Link to="/home" className="logo">
+        GlowMatch
+      </Link>
+
+      <ul className="nav-links">
+
         <li>
-  <a href="#home">Home</a>
-</li>
-          <li>Skincare</li>
-          <li>Makeup</li>
-          <li>
-  <a href="#quiz">Quiz</a>
-</li>
-          <li>Favorites</li>
-        </ul>
-  
-        <button>Login</button>
-      </nav>
-    )
-  }
-   
-  export default Navbar
+          <Link to="/home">Home</Link>
+        </li>
+
+        <li>
+          <Link to="/quiz/skincare">Skincare</Link>
+        </li>
+
+        <li>
+          <Link to="/quiz/makeup">Makeup</Link>
+        </li>
+
+        <li>
+          <Link to="/home">Quiz</Link>
+        </li>
+
+        <li>
+          <Link to="/favorites">Favorites</Link>
+        </li>
+
+      </ul>
+
+      <Link to="/login">
+        <button className="login-button">
+          Login
+        </button>
+      </Link>
+
+    </nav>
+  )
+}
+
+export default Navbar

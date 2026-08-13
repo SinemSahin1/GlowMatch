@@ -33,6 +33,15 @@ public class Product {
 
     private String hairType;
     private String hairConcern;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getHairType() {
         return hairType;

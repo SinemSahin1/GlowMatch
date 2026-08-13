@@ -24,18 +24,24 @@ public class AuthService {
         return userRepository.save(user);
     }
 
-    public boolean login(String email, String password) {
+    public User login(String email, String password) {
 
         User user = userRepository
                 .findByEmail(email)
                 .orElse(null);
 
         if (user == null) {
-            return false;
+            return null;
         }
 
-        return passwordEncoder.matches(
+        boolean passwordMatches = passwordEncoder.matches(
                 password,
                 user.getPassword());
+
+        if (!passwordMatches) {
+            return null;
+        }
+
+        return user;
     }
 }

@@ -59,6 +59,7 @@ public class ProductService {
         product.setIntensity(newProduct.getIntensity());
 
         product.setHairConcern(newProduct.getHairConcern());
+        product.setDescription(newProduct.getDescription());
 
         return productRepository.save(product);
 

@@ -10,33 +10,36 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      })
-  
-      console.log('response:', response)
-  
+      const response = await fetch(
+        'http://localhost:8080/api/auth/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email,
+            password
+          })
+        }
+      )
+
       const result = await response.json()
-  
-      console.log('result:', result)
-  
-      if (result === true) {
+
+      console.log('Login result:', result)
+
+      if (result && result.id) {
+        localStorage.setItem('userId', result.id)
+
         setMessage('Login successful!')
-  
+
         setTimeout(() => {
           navigate('/home')
         }, 1000)
       } else {
         setMessage('Email or password is incorrect.')
       }
-  
+
     } catch (error) {
       console.error(error)
       setMessage('Backend connection error.')

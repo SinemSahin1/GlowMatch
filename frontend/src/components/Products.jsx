@@ -21,14 +21,15 @@ function Products() {
       {products
   .filter((product) => product.brand !== 'CeraVe')
   .map((product) => (
-          <ProductCard
-            key={product.id}
-            brand={product.brand}
-            name={product.name}
-            category={product.category}
-            price={`${product.price} TL`}
-            image={product.image}
-          />
+    <ProductCard
+    key={product.id}
+    id={product.id}
+    brand={product.brand}
+    name={product.name}
+    category={product.category}
+    price={`${product.price} TL`}
+    image={product.image}
+  />
         ))}
       </div>
     </section>
