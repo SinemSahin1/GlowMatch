@@ -31,7 +31,7 @@ function Login() {
         setMessage('Login successful!')
   
         setTimeout(() => {
-          navigate('/')
+          navigate('/home')
         }, 1000)
       } else {
         setMessage('Email or password is incorrect.')

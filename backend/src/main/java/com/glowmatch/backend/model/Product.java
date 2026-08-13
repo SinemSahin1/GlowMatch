@@ -31,6 +31,25 @@ public class Product {
     private String occasion;
     private String intensity;
 
+    private String hairType;
+    private String hairConcern;
+
+    public String getHairType() {
+        return hairType;
+    }
+
+    public void setHairType(String hairType) {
+        this.hairType = hairType;
+    }
+
+    public String getHairConcern() {
+        return hairConcern;
+    }
+
+    public void setHairConcern(String hairConcern) {
+        this.hairConcern = hairConcern;
+    }
+
     public String getGender() {
         return gender;
     }

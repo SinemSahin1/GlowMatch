@@ -25,6 +25,9 @@ const [fragranceOccasion, setFragranceOccasion] = useState('')
 const [fragranceIntensity, setFragranceIntensity] = useState('')
 const [fragranceBudget, setFragranceBudget] = useState('')
 
+ 
+const [hairConcern, setHairConcern] = useState('')
+const [hairBudget, setHairBudget] = useState('')
 
 
   function nextStep() {
@@ -594,17 +597,80 @@ const [fragranceBudget, setFragranceBudget] = useState('')
     return (
       <section className="beauty-quiz">
         <h2>Haircare Quiz</h2>
-        <p>Haircare questions will be added next.</p>
+  
+        <p>What is your main hair concern?</p>
+  
+        <button
+          className={hairConcern === 'Dryness' ? 'selected' : ''}
+          onClick={() => setHairConcern('Dryness')}
+        >
+          Dryness
+        </button>
+  
+        <button
+          className={hairConcern === 'Damage' ? 'selected' : ''}
+          onClick={() => setHairConcern('Damage')}
+        >
+          Damage
+        </button>
+  
+        <button
+          className={hairConcern === 'Hair Loss' ? 'selected' : ''}
+          onClick={() => setHairConcern('Hair Loss')}
+        >
+          Hair Loss
+        </button>
+  
+        <p>Your concern: {hairConcern}</p>
+  
+        <p>What is your maximum budget?</p>
+  
+        <input
+          type="number"
+          placeholder="Budget in TL"
+          value={hairBudget}
+          onChange={(e) => setHairBudget(e.target.value)}
+        />
+  
+        <p>Your budget: {hairBudget} TL</p>
+  
+        <button
+          onClick={handleHairRecommendations}
+          disabled={!hairConcern || !hairBudget}
+        >
+          See My Recommendations
+        </button>
+  
+        <div className="product-list">
+          {recommendations.map((product) => (
+            <ProductCard
+              key={product.id}
+              brand={product.brand}
+              name={product.name}
+              category={product.category}
+              price={`${product.price} TL`}
+              image={product.image}
+            />
+          ))}
+        </div>
       </section>
     )
+  }
+    async function handleHairRecommendations() {
+      try {
+        const response = await fetch(
+          `http://localhost:8080/api/products/haircare?hairConcern=${hairConcern}&budget=${hairBudget}`
+        )
     
+        const data = await response.json()
+    
+        setRecommendations(data)
+    
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 
-  return (
-    <section className="beauty-quiz">
-      <h2>Quiz not found.</h2>
-    </section>
-  )
-}
 
 export default BeautyQuiz

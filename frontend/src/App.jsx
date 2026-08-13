@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
 
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Categories from './components/Categories'
@@ -23,10 +23,14 @@ function Home() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/quiz/:category" element={<BeautyQuiz />} />
-    </Routes>
+  <Route path="/" element={<Navigate to="/login" replace />} />
+
+  <Route path="/login" element={<Login />} />
+
+  <Route path="/home" element={<Home />} />
+
+  <Route path="/quiz/:category" element={<BeautyQuiz />} />
+</Routes>
   )
 }
 

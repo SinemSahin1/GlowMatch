@@ -84,4 +84,14 @@ public class ProductController {
                 budget);
 
     }
+
+    @GetMapping("/haircare")
+    public List<Product> getHairRecommendations(
+            @RequestParam String hairConcern,
+            @RequestParam Double budget) {
+
+        return productService.getHairRecommendations(
+                hairConcern,
+                budget);
+    }
 }

@@ -58,6 +58,8 @@ public class ProductService {
         product.setOccasion(newProduct.getOccasion());
         product.setIntensity(newProduct.getIntensity());
 
+        product.setHairConcern(newProduct.getHairConcern());
+
         return productRepository.save(product);
 
     }
@@ -97,6 +99,18 @@ public class ProductService {
                         "Fragrance",
                         gender,
                         fragranceFamily,
+                        budget);
+
+    }
+
+    public List<Product> getHairRecommendations(
+            String hairConcern,
+            Double budget) {
+
+        return productRepository
+                .findByCategoryAndHairConcernAndPriceLessThanEqual(
+                        "Haircare",
+                        hairConcern,
                         budget);
     }
 
